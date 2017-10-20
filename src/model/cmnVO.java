@@ -13,8 +13,7 @@ public class cmnVO {
 	private int ref;
 	private int re_level;
 	private int re_step;
-	private String file_orgname;
-	private String file_savname;
+	private String img;
 	private String session_ID;
 	
 	public int getNo() {
@@ -71,17 +70,12 @@ public class cmnVO {
 	public void setRe_step(int re_step) {
 		this.re_step = re_step;
 	}
-	public String getFile_orgname() {
-		return file_orgname;
+
+	public String getImg() {
+		return img;
 	}
-	public void setFile_orgname(String file_orgname) {
-		this.file_orgname = file_orgname;
-	}
-	public String getFile_savname() {
-		return file_savname;
-	}
-	public void setFile_savname(String file_savname) {
-		this.file_savname = file_savname;
+	public void setImg(String img) {
+		this.img = img;
 	}
 	public String getSession_ID() {
 		return session_ID;
@@ -89,7 +83,6 @@ public class cmnVO {
 	public void setSession_ID(String session_ID) {
 		this.session_ID = session_ID;
 	}
-	
 	
 
 }

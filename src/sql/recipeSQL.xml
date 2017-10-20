@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="recipe">
+
+<typeAlias alias="recipe" type="model.recipeVO"></typeAlias>
+<typeAlias alias="r_comment" type="model.recipeCommentVO"></typeAlias>
+<typeAlias alias="bookmark" type="model.recipeVO"></typeAlias>
+<typeAlias alias="grade" type="model.RecipeGradeVO"></typeAlias>
+
+<resultMap class="recipe" id="recipeRes">
+
+<result property="id" column="recipe_id"/>
+<result property="no" column="recipe_no"/>
+<result property="subject" column="recipe_subject"/>
+<result property="category" column="recipe_category"/>
+<result property="count" column="recipe_count"/>
+<result property="regdate" column="recipe_regdate"/>
+<result property="content" column="recipe_content"/>
+<result property="img" column="recipe_img"/>
+<result property="thumbnail" column="thumbnail"/>
+<result property="text1" column="recipe_text1"/>  
+<result property="text2" column="recipe_text2"/>
+<result property="text3" column="recipe_text3"/>
+<result property="text4" column="recipe_text4"/>
+<result property="text5" column="recipe_text5"/>
+<result property="text6" column="recipe_text6"/>   
+<result property="text7" column="recipe_text7"/>
+<result property="text8" column="recipe_text8"/>
+<result property="text9" column="recipe_text9"/>
+<result property="ingr" column="recipe_ingr"/>
+<result property="totalgrade" column="recipe_totalgrade"/>
+</resultMap>
+
+
+<resultMap class="r_comment" id="r_commentRes">
+
+<result property="c_no" column="comment_no"/>
+<result property="id" column="member_id"/>
+<result property="r_no" column="recipe_no"/>
+<result property="c_content" column="comment_content"/>
+<result property="c_regdate" column="comment_regdate"/>
+
+</resultMap>
+
+<resultMap class="bookmark" id="bookmarkRes">
+
+<result property="id" column="member_id"/>
+<result property="r_no" column="recipe_no"/>
+<result property="b_regdate" column="bookmark_regdate"/>
+
+</resultMap>
+
+<resultMap class="grade" id="gradeRes">
+
+<result property="id" column="recipe_id"/>
+<result property="r_no" column="recipe_no"/>
+<result property="r_grade" column="recipe_grade"/>
+</resultMap>
+
+
+<sql id="RCP-select-all">
+select * from recipe
+</sql>
+
+<sql id="RCP-where-no">
+where recipe_no =#r_no#
+</sql>
+
+
+<!-- select 쿼리 모음 -->
+<select id="selectAllRecipe" resultMap="recipeRes" parameterClass="int" >
+<include refid="RCP-select-all"></include>
+ORDER BY RECIPE_NO desc
+</select>
+
+<select id="selectAllBookmark" resultMap="recipeRes" parameterClass="String">
+	SELECT * FROM (select * from recipe_bookmark where member_id=#id#) a, recipe
+	WHERE a.recipe_no=recipe.recipe_no
+	order by bookmark_regdate DESC
+</select>
+
+
+<select id="selectOneRecipe" resultMap="recipeRes" parameterClass="int" remapResults="true" >
+<include refid="RCP-select-all"></include>
+<include refid="RCP-where-no"/>
+</select>
+
+<select id="RecipeSeqNo" resultClass="int" >
+	SELECT LAST_NUMBER  FROM USER_SEQUENCES WHERE SEQUENCE_NAME = UPPER('RECIPE_NO_SEQ')
+</select>
+
+<select id="selectAllComment" resultMap="r_commentRes" parameterClass="int">
+	SELECT * FROM RECIPE_COMMENT
+	WHERE recipe_no = #r_no#
+	ORDER BY comment_no DESC
+</select>
+<select id="selectMyList" resultMap="recipeRes" parameterClass="String">
+<include refid="RCP-select-all"></include>
+where recipe_id=#id#
+order by recipe_no desc
+</select>
+<!-- 검색 쿼리 추가 -->
+<select id="selectRecipeSearchW" resultMap="recipeRes" parameterClass="String">
+<include refid="RCP-select-all" />
+where RECIPE_ID like #searchKeyword#
+ORDER BY RECIPE_NO DESC
+</select>
+
+<select id="selectRecipeSearchS" resultMap="recipeRes" parameterClass="String">
+<include refid="RCP-select-all" />
+where RECIPE_SUBJECT like #searchKeyword#
+ORDER BY RECIPE_NO DESC
+</select>
+
+<select id="selectRecipeSearchC" resultMap="recipeRes" parameterClass="String">
+<include refid="RCP-select-all" />
+where RECIPE_CONTENT like #searchKeyword#
+ORDER BY RECIPE_NO DESC
+</select>
+
+<!-- ========재료검색========= -->
+<select id="selectIngrSearch" resultMap="recipeRes" parameterClass="String">
+<include refid="RCP-select-all"/>
+WHERE RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 1)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 2)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 3)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 4)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 5)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 6)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 7)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 8)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 9)
+AND RECIPE_INGR LIKE REGEXP_SUBSTR(#ingrKeyword#, '[^,]+', 1, 10)
+ORDER BY RECIPE_NO DESC
+</select>
+
+
+<!-- insert쿼리모음 -->
+<insert id="insertRecipe" parameterClass="recipe">
+INSERT INTO RECIPE (RECIPE_NO,
+                       RECIPE_ID,
+                       RECIPE_SUBJECT,
+                       
+                       RECIPE_REGDATE,
+                       RECIPE_CONTENT,
+                       RECIPE_TEXT1, RECIPE_TEXT2, RECIPE_TEXT3, RECIPE_TEXT4, RECIPE_TEXT5, RECIPE_TEXT6, RECIPE_TEXT7, RECIPE_TEXT8, RECIPE_TEXT9 )
+               
+               VALUES (RECIPE_NO_SEQ.NEXTVAL,
+                        #id#,
+                        #subject#,
+                       
+                        #regdate#,
+                        #content#,
+                        #text1#, #text2#, #text3#, #text4#, #text5#, #text6#, #text7#, #text8#, #text9#
+                        )                      
+</insert>
+
+<insert id="insertBookmark" parameterClass="bookmark">
+	INSERT INTO RECIPE_BOOKMARK(MEMBER_ID, RECIPE_NO, BOOKMARK_REGDATE)
+	VALUES(#id#, #r_no#, #b_regdate#)
+</insert>
+
+<insert id="insertComment" parameterClass="r_comment">
+	INSERT INTO RECIPE_COMMENT(COMMENT_NO, RECIPE_NO, MEMBER_ID, COMMENT_CONTENT, COMMENT_REGDATE)
+	VALUES (RECIPE_C_SEQ.NEXTVAL, #r_no#, #id#, #c_content#, #c_regdate#)
+</insert>
+
+<!-- update쿼리 모음 -->
+<update id="updateRecipe" parameterClass="recipe">
+UPDATE RECIPE SET RECIPE_SUBJECT = #subject#,
+                     
+                     RECIPE_CONTENT = #content#,
+                     RECIPE_TEXT1 = #text1#,
+                     RECIPE_TEXT2 = #text2#,
+                     RECIPE_TEXT3 = #text3#,
+                     RECIPE_TEXT4 = #text4#,
+                     RECIPE_TEXT5 = #text5#,
+                     RECIPE_TEXT6 = #text6#,
+                     RECIPE_TEXT7 = #text7#,
+                     RECIPE_TEXT8 = #text8#,
+                     RECIPE_TEXT9 = #text9#                     
+<include refid="RCP-where-no"/>            
+</update>
+
+<update id="updateCategory" parameterClass="recipe">
+   UPDATE RECIPE SET RECIPE_CATEGORY = #category#
+<include refid="RCP-where-no" />
+</update>
+
+<update id="updateImage" parameterClass="recipe">
+UPDATE RECIPE SET RECIPE_IMG = #img#, THUMBNAIL=#thumbnail#
+<include refid="RCP-where-no"/>
+</update>
+
+<update id="updateIngr" parameterClass="recipe">
+UPDATE RECIPE SET RECIPE_INGR = #ingr#
+<include refid="RCP-where-no"/>
+</update>
+
+
+<update id="recipeCount" parameterClass="recipe">
+   UPDATE RECIPE SET RECIPE_COUNT = RECIPE_COUNT + 1
+   <include refid="RCP-where-no"></include>
+</update>
+
+
+<!-- delete 쿼리 모음 -->
+<delete id="deleteRecipe" parameterClass="recipe">
+   DELETE FROM RECIPE
+   <include refid="RCP-where-no"/>
+</delete>
+
+<delete id="deleteComment" parameterClass="r_comment">
+	DELETE FROM RECIPE_COMMENT
+	WHERE COMMENT_NO = #c_no#
+</delete>
+
+<select id="todayList" resultMap="recipeRes">
+<![CDATA[ 
+select * from recipe where rownum <=3 order by recipe_count
+]]>
+</select>   
+
+<select id="todayList1" resultMap="recipeRes">
+<![CDATA[ 
+select * from (select * from RECIPE where rownum <=3) order by recipe_totalgrade
+]]>
+</select>
+
+<!-- 평점 -->
+<insert id="insertRating" parameterClass="grade">
+      insert into recipe_grade(RECIPE_ID , RECIPE_NO ,RECIPE_GRADE ) 
+      values(#id#, #r_no# , #r_grade# )
+   </insert>
+   
+   <select id="checkEstimation" parameterClass="grade" resultClass="int">
+         select count(*)
+       from recipe_grade
+         where RECIPE_NO=#r_no# and RECIPE_ID=#id#
+    </select>
+    
+    <update id="updateRating" parameterClass="grade">
+      UPDATE RECIPE_GRADE SET RECIPE_ID=#id#,
+                            RECIPE_NO=#r_no#,
+                            RECIPE_GRADE=#r_grade#
+     WHERE RECIPE_NO=#r_no# and RECIPE_ID=#id#
+   </update>
+   <update id="updateGrade" parameterClass="int">
+      update recipe 
+      set recipe_totalgrade = (select avg(RECIPE_GRADE) from RECIPE_GRADE where RECIPE_NO=#r_no#)
+      where RECIPE_NO=#r_no#
+   </update>
+
+
+
+
+</sqlMap>

@@ -1,0 +1,190 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+
+#quick {
+	position: absolute;
+	top: 175px;
+	right: 0;
+	z-index: 97;
+	height: 447px;
+}
+
+#quick .quick_bg {
+	width: 129px;
+	height: 524px;
+	background: url(../images/quick_bg.png) right 0 no-repeat;
+	padding-left: 19px;
+	padding-top: 2px
+}
+
+#quick .quick_bg.bg2 {
+	height: 447px;
+	background: url(../images/quick_bg3.png) right 0 no-repeat;
+}
+
+.quick_inner {
+	position: relative;
+	padding-top: 20px;
+	height: 100%;
+}
+
+.quick_link {
+	margin-left: 16px; /* border-bottom:1px solid #f6f6f6; */
+	width: 78px;
+	padding-bottom: 17px;
+}
+
+.quick_link a {
+	display: block;
+	font-size: 12px;
+	color: #5e5e5e;
+	margin-top: 20px;
+	line-height: 14px;
+}
+
+.quick_link a:first-child {
+	margin: 0;
+}
+
+.quick_link a img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 5px;
+	margin-top: -2px
+}
+
+.quick_product {
+	margin-left: 15px;
+}
+
+.quick_prod_top {
+	padding-top: 16px;
+	width: 79px;
+	margin-bottom: 8px;
+}
+
+.quick_prod_top img {
+	margin: 0 auto;
+}
+
+.quick_prod_top p {
+	text-align: center;
+	font-size: 12px;
+	color: #5e5e5e;
+	line-height: 12px;
+	margin-top: 7px;
+}
+
+.quick_area {
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	position: relative;
+}
+
+.quick_areaList {
+	position: absolute;
+	top: 0px;
+	height: 255px;
+}
+
+.quick_area .quick_areaList .sliderQuick {
+	margin-bottom: 9px;
+}
+
+.quick_area .quick_areaList a {
+	display: block;
+	width: 79px;
+	height: 79px;
+	position: relative;
+	overflow: hidden;
+}
+
+.quick_area .quick_areaList img {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+.quick_areaList .no_list {
+	padding-top: 100px;
+	line-height: 20px;
+	font-size: 12px;
+	color: #888;
+	text-align: center;
+	word-break: keep-all;
+}
+
+.quick_today_btn {
+	font-size: 0;
+	line-height: 0;
+	margin-top: 9px;
+}
+
+.quick_today_btn a:first-child {
+	margin-right: 2px;
+}
+
+.quick_today_btn img {
+	float: left;
+	margin-right: 3px;
+}
+
+#quick .quicktop {
+	display: block;
+	position: absolute;
+	width: 110px;
+	right: 0;
+	bottom: 7px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	font-size: 10px;
+	color: #383838;
+	font-weight: 500
+}
+
+#quick .quick_btn {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 224px;
+	width: 19px;
+	height: 64px;
+	background: url(../images/btn_quick_off.png) 0 0 no-repeat;
+}
+
+#quick .quick_btn {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -30px;
+}
+
+#quick .quick_btn.on {
+	background: url(../images/btn_quick_on.png) 0 0 no-repeat;
+}
+
+#quick.off {
+	background: none;
+}
+
+#quick.off .quick_bg {
+	display: none;
+}
+
+#quick.off .quick_inner {
+	display: none;
+}
+
+#quick.off .quicktop {
+	display: none;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+	

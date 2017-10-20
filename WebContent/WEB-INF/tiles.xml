@@ -1,14 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
 
-    <definition>
-        
-    </definition>
-    
-    
+	<definition name="main" template="/main/layout.jsp">
+		<put-attribute name="title" value="레시피를 부탁해" />
+		<put-attribute name="header" value="/main/header.jsp" />
+		
+		<put-attribute name="body" value="/main/main.jsp" />
+		<put-attribute name="footer" value="/main/footer.jsp" />
+	</definition>
+	
+
+<!-- 	
+회원 가입 
+	<definition name="LoginAdd" extends="main">
+		<put-attribute name="body" value="/login/LoginForm.jsp" />
+	</definition>
+
+로그인 화면
+	<definition name="Login" extends="main">
+		<put-attribute name="body" value="/login/Login.jsp" />
+	</definition>
+아이디 찾기
+	<definition name="FindID" extends="main">
+		<put-attribute name="body" value="/login/ChkID.jsp" />
+	</definition>
+	
+	<definition name="FindIDForm" extends="main">
+		<put-attribute name="body" value="/login/check/FindID.jsp" />
+	</definition>
+패스워드 찾기
+	<definition name="FindPWForm" extends="main">
+		<put-attribute name="body" value="/login/check/FindPW.jsp" />
+	</definition>
+	<definition name="FindPW" extends="main">
+		<put-attribute name="body" value="/login/ChkPW.jsp" />
+	</definition>
+	 -->
+<!-- 자유게시판 리스트 -->
+	<definition name="CMN_list" extends="main">
+		<put-attribute name="body" value="/cmnBoard/cmnList.jsp" />
+	</definition>
+<!-- 자유게시판 글쓰기 폼	
+	<definition name="CMN_writeForm" extends="main">
+		<put-attribute name="body" value="/board_CMN/CMN_writeForm.jsp" />
+	</definition>
+자유게시판 상세보기
+	<definition name="CMN_viewAction" extends="main">
+		<put-attribute name="body" value="/board_CMN/CMN_view.jsp" />
+	</definition>
+need login
+	<definition name="CMN_script" extends="main">
+		<put-attribute name="body" value="/board_CMN/script.jsp" />
+	</definition>
+	
+		
+팁 게시판 리스트
+	<definition name="TIP_list" extends="main">
+		<put-attribute name="body" value="/board_TIP/TIP_list.jsp" />
+	</definition>
+팁 게시판 글쓰기 폼	
+	<definition name="TIP_writeForm" extends="main">
+		<put-attribute name="body" value="/board_TIP/TIP_writeForm.jsp" />
+	</definition>
+팁게시판 상세보기
+	<definition name="TIP_viewAction" extends="main">
+		<put-attribute name="body" value="/board_TIP/TIP_view.jsp" />
+	</definition>
+
+need login
+	<definition name="TIP_script" extends="main">
+		<put-attribute name="body" value="/board_TIP/script.jsp" />
+	</definition>
+	
+FAQ 리스트
+    <definition name="FAQ_list" extends="main">
+		<put-attribute name="body" value="/faq/FAQ_list.jsp" />
+	</definition> 
+FAQ 글쓰기
+     <definition name="FAQ_writeForm" extends="main">
+		<put-attribute name="body" value="/faq/FAQ_writeForm.jsp" />
+	</definition>
+FAQ 상세보기	
+     <definition name="FAQ_viewAction" extends="main">
+		<put-attribute name="body" value="/faq/FAQ_view.jsp" />
+	</definition>
+	
+	
+ 공지사항 리스트
+     <definition name="NOTICE_list" extends="main">
+		<put-attribute name="body" value="/notice/NOTICE_list.jsp" />
+	</definition>
+
+
+공지사항 글쓰기& 폼
+      <definition name="NOTICE_writeForm" extends="main">
+		<put-attribute name="body" value="/notice/NOTICE_writeForm.jsp" />
+	</definition>
+
+
+공지사항 상세보기
+     <definition name="NOTICE_viewAction" extends="main">
+		<put-attribute name="body" value="/notice/NOTICE_view.jsp" />
+	</definition>
+
+ 회원 탈퇴
+	<definition name="DeleteForm" extends="main">
+		<put-attribute name="body" value="/login/DeleteUser.jsp" />
+	</definition>
+	
+	<definition name="Delete" extends="main">
+		<put-attribute name="body" value="/login/DeleteChk.jsp" />
+	</definition>
+	
+	<definition name="DeleteFail" extends="main">
+		<put-attribute name="body" value="/login/DeleteFail.jsp" />
+	</definition>
+
+ 회원 수정
+	<definition name="ModifyForm" extends="main">
+		<put-attribute name="body" value="/login/UserModify.jsp" />
+	</definition>
+	
+	<definition name="Modify" extends="main">
+		<put-attribute name="body" value="/main/main.jsp" />
+	</definition>
+로그인 실패
+	<definition name="LoginFail" extends="main">
+		<put-attribute name="body" value="/login/LoginFail.jsp" />
+	</definition>
+메시지 리스트
+	<definition name="Msg_list" extends="main">
+		<put-attribute name="body" value="/Msg/Msg_list.jsp" />
+	</definition>
+ 받은 메시지
+	<definition name="Msg_Rec_list" extends="main">
+		<put-attribute name="body" value="/Msg/Rec_list.jsp" />
+	</definition>
+ 보낸 메시지
+	<definition name="Msg_Wrt_list" extends="main">
+		<put-attribute name="body" value="/Msg/Wrt_list.jsp" />
+	</definition>
+관리자 페이지
+     <definition name="admin" extends="main">
+		<put-attribute name="body" value="/admin/admin.jsp" />
+	</definition>	
+멤버리스트
+     <definition name="adminMemberList" extends="main">
+		<put-attribute name="body" value="/admin/adminMemberList.jsp" />
+	</definition>		
+멤버 상세 보기
+     <definition name="adminMemberDetailForm" extends="main">
+		<put-attribute name="body" value="/admin/adminMemberDetail.jsp" />
+	</definition>	
+	
+	<definition name="adminMemberListForm" extends="main">
+		<put-attribute name="body" value="/admin/adminMemberList.jsp" />
+	</definition>	
+	
+레서피게시판
+	레서피 게시판 리스트
+	<definition name="RCP_list" extends="main">
+		<put-attribute name="body" value="/recipe/RCP_list.jsp"/>
+	</definition>
+	
+	레서피 게시판 글쓰기 폼
+	<definition name="RCP_write" extends="main">
+		<put-attribute name="body" value="/recipe/RCP_writeForm.jsp" />
+	</definition>
+	로그인이 필요 합니다
+	<definition name="RCP_script" extends="main">
+		<put-attribute name="body" value="/board_TIP/script.jsp" />
+	</definition>
+	레서피 상세보기
+	<definition name="RCP_view" extends="main">
+		<put-attribute name="body" value="/recipe/RCP_view.jsp" />
+	</definition>
+	내가 쓴 레서피
+	<definition name="RCP_MyList" extends="main">
+		<put-attribute name="body" value="/recipe/my_recipe_list.jsp"/>
+	</definition>
+	
+즐겨찾기
+	리스트
+	<definition name="RCP_bookmarkList" extends="main">
+		<put-attribute name="body" value="/recipe/bookmark_list.jsp" />
+	</definition>
+	
+	<definition name="MyPage" extends="main">
+		<put-attribute name="body" value="/main/MyPage.jsp"/>
+	</definition>
+	
+ 오늘은 뭐먹지 리스트
+	<definition name="todaylist" extends="main">
+		<put-attribute name="body" value="/recipe/todaylist.jsp" />
+	</definition>
+	
+	<definition name="searchForm" extends="main">
+		<put-attribute name="body" value="/recipe/search.jsp"/>
+	</definition>
+	
+ -->
+	
 </tiles-definitions>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+	
+<struts>
+
+	<constant name="struts.multipart.maxSize" value="104857600"/>
+
+	<package name="board_CMN" extends="struts-default, tiles-default">   
+		<!-- 자유게시판 리스트 액션 -->
+		
+		 <action name="CMN_listAction" class="totalList.ListAction">
+	    	<result type="tiles">CMN_list</result>
+	    </action>
+	</package>
+</struts>

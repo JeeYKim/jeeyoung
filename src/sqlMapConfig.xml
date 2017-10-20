@@ -3,7 +3,7 @@
 	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 
 <sqlMapConfig>
-	<properties resource="/jdbc/dbconnect.properties" />
+	<properties resource="dbconnect.properties" />
 	<settings cacheModelsEnabled="true" 
 	         enhancementEnabled="true"
 	         lazyLoadingEnabled="true" 
@@ -20,5 +20,13 @@
             			<property name="JDBC.Password" value="${password}" />
 		</dataSource>
 	</transactionManager>
+	
+	<sqlMap resource="/sql/tipSQL.xml"/>
+	<sqlMap resource="/sql/cmnSQL.xml"/>
+	<sqlMap resource="/sql/recipeSQL.xml"/>
+	<sqlMap resource="/sql/qnaSQL.xml"/>
+	<sqlMap resource="/sql/noticeSQL.xml"/>
+	<sqlMap resource="/sql/messageSQL.xml"/>
+	<sqlMap resource="/sql/memberSQL.xml"/>
 	
 </sqlMapConfig>

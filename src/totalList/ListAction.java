@@ -11,9 +11,9 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
 import model.cmnVO;
+import model.faqVO;
 import model.memberVO;
 import model.noticeVO;
-import model.qnaVO;
 import model.recipeVO;
 import model.tipVO;
 
@@ -76,7 +76,7 @@ public class ListAction extends ActionSupport{
 	public List qnaList() throws Exception{
 		
 		blockCount = 10;	//qna리스트는 한페이지에 10개씩
-		list = new ArrayList<qnaVO>();
+		list = new ArrayList<faqVO>();
 		
 		if (find==null || find.equals("")) {
 			list = sqlMapper.queryForList("selectNoticeAll");

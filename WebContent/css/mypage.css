@@ -1,0 +1,34 @@
+.ranking_cont {padding:0 20px 15px;}
+.ranking_top {margin:0 0 0 -19px;}
+.ranking_box {padding:10px 0 0 19px;}
+.ranking_box.st2 {padding:120px 0 10px 39px; margin:20px -20px -35px -20px; background:#582f29; position:relative;}
+.ranking_box.st2.ea3 a {width:260px; text-align:center; padding:26px 0;}
+.ranking_box.st2.ea3 p {margin:10px 0 0 0; width:100%;}
+.ranking_box.ea3 a {width:260px;}
+.ranking_box.ea4 a, .ranking_box.ea2 a {width:397px;}
+.ranking_box.ea5 a {width:260px;}
+.ranking_box.ea5 a:nth-child(1), .ranking_box.ea5 a:nth-child(2) {width:397px;}
+.ranking_box.ea6 a {width:260px;}
+.ranking_box.ea7 a {width:397px;}
+.ranking_box.ea7 a:nth-child(5), .ranking_box.ea7 a:nth-child(6), .ranking_box.ea7 a:nth-child(7) {width:260px;}
+.ranking_box.ea8 a {width:260px;}
+.ranking_box.ea8 a:nth-child(7), .ranking_box.ea8 a:nth-child(8) {width:397px;}
+.ranking_box.ea9 a {width:260px;}
+.ranking_box.ea10 a {width:260px;}
+.ranking_box.ea10 a:nth-child(7), .ranking_box.ea10 a:nth-child(8), .ranking_box.ea10 a:nth-child(9), .ranking_box.ea10 a:nth-child(10) {width:397px;}
+.ranking_box a {border:1px solid #ddd; background:#fff; border-radius:8px; display:inline-block; padding:20px; margin:0 5px 10px 5px; width:397px;}
+.ranking_box a img {width:100px; height:100px; display:inline-block;}
+.ranking_box.st2 a {width:397px; background:#fdf5e1;}
+.ranking_box p {margin:0 0 0 10px; width:240px; color:#888; font-size:14px; display:inline-block; vertical-align:middle;}
+.ranking_box b {color:#000; font-size:18px; display:block; margin-bottom:2px;}
+.ranking_box b img {width:24px; height:24px; vertical-align:text-bottom;}
+.ranking_top_t {border-bottom:1px solid #ddd; margin:10px; padding:14px 5px 15px 5px;}
+.ranking_top_t.st2 {margin:-16px 0 20px 0; padding:14px 5px 15px 5px;}
+.ranking_box .ranking_h_tit {position:absolute; left:0; top:26px; text-align:center; width:100%;}
+.ranking_box .ranking_h_tit img {width:460px;}
+.top_icon {background:url(http://recipe1.ezmember.co.kr/img/mobile/icon_ranking.png) left top no-repeat; padding:3px 0 6px 35px; font-size:18px; font-weight:bold;}
+.top_icon img {width:24px; height:24px; margin-left:4px;}
+.ranking_top_t .btn {padding:4px 15px 6px 10px; margin-top:-2px;}
+.ranking_top_t .btn .glyphicon {margin-left:20px;}
+.ranking_lineup {padding:70px 0 0 20px;} 
+.ranking_lineup.st2 {padding:14px; float:left;} 

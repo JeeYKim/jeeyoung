@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="board">
+	<!-- 데이터를 꺼낼때 사용할것 설정 -->
+	<typeAlias alias="FAQ" type="model.faqVO" />
+	
+	<!-- 리절트 맵 정의: id="boardRes" -->
+	<resultMap id="faqRes" class="faq">
+		<result property="no" column="Faq_NO" />
+		<result property="id" column="Member_ID" />
+		<result property="subject" column="Faq_SUBJECT" />
+		<result property="content" column="Faq_CONTENT" />
+		<result property="count" column="Faq_COUNT" />
+		<result property="regdate" column="Faq_REGDATE" />
+		<result property="ref" column="Faq_REF" />
+		<result property="re_level" column="Faq_RE_LEVEL" />
+		<result property="re_step" column="Faq_RE_STEP" />
+	</resultMap>
+	
+	
+	<sql id="FAQ-select-all">
+		SELECT * FROM FAQ  
+	</sql>
+
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="FAQ-where-no">
+		WHERE Faq_NO= #no#
+	</sql>
+	<!-- select절 -->
+		<select id="FAQ-selectAll" resultMap="faqRes" parameterClass="int">
+			<include refid="FAQ-select-all"/>
+			ORDER BY Faq_ref DESC, Faq_re_step ASC
+		</select>
+		
+		<select id="FAQ-selectOne" resultMap="faqRes" parameterClass="int">
+			<include refid="FAQ-select-all"/>
+			<include refid="FAQ-where-no"/>
+		</select>
+		
+		<select id="FAQ-selectLastNo" resultClass="int" >
+			SELECT max(Faq_NO) as NO FROM FAQ
+		</select>
+		
+		
+		<!-- 검색로직 추가시작 -->
+	<select id="FAQ-selectSearchW" resultMap="faqRes" parameterClass="string">
+		<include refid="FAQ-select-all" />
+		 WHERE Member_ID like #searchKeyword#
+		 ORDER BY Faq_NO DESC
+	</select>
+	
+	<select id="FAQ-selectSearchS" resultMap="faqRes" parameterClass="string">
+		<include refid="CMN-select-all" />
+		 WHERE Faq_SUBJECT like #searchKeyword#
+		 ORDER BY Faq_NO DESC
+	</select>
+	
+	<select id="FAQ-selectSearchC" resultMap="faqRes" parameterClass="string">
+		<include refid="FAQ-select-all" />
+		 WHERE Faq_CONTENT like #searchKeyword#
+		 ORDER BY Faq_NO DESC
+	</select>
+	
+		<!-- insert절 -->
+	<insert id="FAQ-insertBoard" parameterClass="faq">
+		INSERT INTO FAQ(Faq_NO, Faq_SUBJECT, Member_ID, Faq_CONTENT, Faq_REGDATE,Faq_RE_STEP,Faq_RE_LEVEL,Faq_REF,Faq_COUNT)
+		VALUES (FAQ_NO_SEQ.NEXTVAL, #subject#, #id#, #content#, #regdate#, #re_step#, #re_level#, FAQ_NO_SEQ.CURRVAL, 0)
+	</insert>
+	
+	<insert id="FAQ-insertBoardReply" parameterClass="faq">
+		INSERT INTO FAQ(Faq_NO, Faq_SUBJECT, Member_ID, Faq_CONTENT, Faq_REGDATE,Faq_RE_STEP,Faq_RE_LEVEL,Faq_REF,Faq_COUNT)
+		VALUES (FAQ_NO_SEQ.NEXTVAL, #subject#, #id#, #content#, #regdate#, #re_step#, #re_level#, #ref#, 0)
+	</insert>
+	
+		
+	<!-- update절 -->
+	<update id="FAQ-updateBoard" parameterClass="faq">
+	UPDATE FAQ SET Faq_SUBJECT = #subject#, 
+							Member_ID = #id#,
+						Faq_CONTENT = #content#
+	<include refid = "FAQ-where-no" />
+	</update>
+	
+	
+	<update id="FAQ-updateCount" parameterClass="faq">
+		UPDATE FAQ SET Faq_COUNT = Faq_COUNT + 1
+		<include refid="FAQ-where-no" />
+	</update>
+	
+	<update id="FAQ-updateReplyStep" parameterClass="faq">
+		UPDATE FAQ SET Faq_re_step=Faq_re_step+1 WHERE Faq_ref=#ref# AND Faq_re_step>#re_step#
+		
+	</update>
+	
+	<!-- delete 쿼리문 정의 -->
+	<delete id="FAQ-deleteBoard" parameterClass="faq">
+		DELETE FROM FAQ
+		<include refid="FAQ-where-no" />
+	</delete>
+	
+</sqlMap>

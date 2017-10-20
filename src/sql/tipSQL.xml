@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="board">
+	<!-- 데이터를 꺼낼때 사용할것 설정 -->
+	<typeAlias alias="board_TIP" type="model.tipVO" />
+<!-- 	<typeAlias alias="comment_TIP" type="model.tipCommentVO" /> -->
+	
+	<!-- 리절트 맵 정의-->
+	<resultMap id="boardRes" class="board_TIP">
+		<result property="no" column="Tip_NO" />
+		<result property="id" column="Member_ID" />
+		<result property="subject" column="Tip_SUBJECT" />
+		<result property="content" column="Tip_CONTENT" />
+		<result property="count" column="Tip_COUNT" />
+		<result property="regdate" column="Tip_REGDATE" />   
+		<result property="ref" column="Tip_REF" />
+		<result property="re_level" column="Tip_RE_LEVEL" />
+		<result property="re_step" column="Tip_RE_STEP" />
+		<result property="img" column="Tip_ORGNAME" />
+	</resultMap>
+<!-- 	
+	<resultMap id="commentRes" class="comment_TIP">
+		<result property="tno" column="Tipc_no" />
+		<result property="no" column="Tip_NO" />
+		<result property="id" column="member_id" />
+		<result property="content" column="Tipc_content" />
+		<result property="regdate" column="Tipc_regdate" />
+	</resultMap>
+ -->
+	<sql id="TIP-select-all">
+		SELECT * FROM board_TIP   
+	</sql>
+	
+<!-- 	<sql id="TIP-select-com">
+		SELECT * FROM TIP_COMMENT
+	</sql> -->
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="TIP-where-no">
+		WHERE Tip_NO= #no#
+	</sql>
+	<!-- select절 -->   
+		<select id="TIP-selectAll" resultMap="boardRes" parameterClass="int">
+			<include refid="TIP-select-all"/>
+			ORDER BY Tip_NO DESC
+		</select>
+	<!-- 			
+		<select id="TIP-selectOne" resultMap="boardRes" parameterClass="int">
+			<include refid="TIP-select-all"/>
+			<include refid="TIP-where-no"/>
+		</select>
+		
+		<select id="TIP-selectLastNo" resultClass="board_TIP" parameterClass="int" >
+			SELECT max(Tip_NO) as no FROM BOARD_TIP
+		</select>   
+ 		
+		<select id="TIP-commentSelectAll" resultMap="commentRes" parameterClass="int">
+			SELECT * FROM TIP_COMMENT
+			WHERE Tip_no = #no#
+			ORDER BY Tipc_no DESC
+		</select>
+	
+		검색로직 추가시작
+	<select id="TIP-selectSearchW" resultMap="boardRes" parameterClass="string">
+		<include refid="TIP-select-all" />
+		 WHERE Member_ID like #searchKeyword#
+		 ORDER BY Tip_NO DESC
+	</select>
+	
+	<select id="TIP-selectSearchS" resultMap="boardRes" parameterClass="string">
+		<include refid="TIP-select-all" />
+		 WHERE Tip_SUBJECT like #searchKeyword#
+		 ORDER BY Tip_NO DESC
+	</select>
+	
+	<select id="TIP-selectSearchC" resultMap="boardRes" parameterClass="string">
+		<include refid="TIP-select-all" />
+		 WHERE Tip_CONTENT like #searchKeyword#
+		 ORDER BY Tip_NO DESC
+	</select>
+	
+		insert절
+	<insert id="TIP-insertBoard" parameterClass="board_TIP">
+		INSERT INTO BOARD_TIP(Tip_NO, Tip_SUBJECT, Member_ID, Tip_CONTENT, Tip_REGDATE,Tip_RE_STEP,Tip_RE_LEVEL,Tip_REF,Tip_COUNT, Tip_ORGNAME)
+		VALUES (BOARD_TIP_NO_SEQ.NEXTVAL, #subject#, #id#, #content#, #regdate#, #re_step#, #re_level#,BOARD_TIP_NO_SEQ.CURRVAL, 0, #img#)
+	</insert>
+	
+	<insert id="TIP-insertBoardReply" parameterClass="board_TIP">
+		INSERT INTO BOARD_TIP(Tip_NO, Tip_SUBJECT, Member_ID, Tip_CONTENT, Tip_REGDATE,Tip_RE_STEP,Tip_RE_LEVEL,Tip_REF,Tip_COUNT)
+		VALUES (BOARD_TIP_NO_SEQ.NEXTVAL, #subject#, #id#, #content#, #regdate#, #re_step#, #re_level#,#ref#, 0)
+	</insert>
+	
+	<insert id="TIP-insertComment" parameterClass="comment_TIP">
+		INSERT INTO TIP_COMMENT(TIPc_NO, Tip_NO, MEMBER_ID, Tipc_CONTENT, Tipc_REGDATE)
+		VALUES (BOARDC_TIP_NO_SEQ.NEXTVAL, #no#, #id#, #content#, #regdate#)
+	</insert>
+	
+	update절
+	<update id="TIP-updateBoard" parameterClass="board_TIP">
+	UPDATE BOARD_TIP SET Tip_SUBJECT = #subject#, 
+							Member_ID = #id#,
+						Tip_CONTENT = #content#
+	<include refid = "TIP-where-no" />
+	</update>
+	
+	<update id="TIP-updateCount" parameterClass="board_TIP">
+		UPDATE BOARD_TIP SET Tip_COUNT = Tip_COUNT + 1
+		<include refid="TIP-where-no" />
+	</update>
+	
+	<update id="TIP-updateReplyStep" parameterClass="board_TIP">
+		UPDATE BOARD_TIP SET Tip_re_step=TIP_re_step+1 WHERE Tip_ref=#ref# AND Tip_re_step>#re_step#
+		
+	</update>
+	
+	delete 쿼리문 정의
+	<delete id="TIP-deleteBoard" parameterClass="board_TIP">
+		DELETE FROM BOARD_TIP
+		<include refid="TIP-where-no" />
+	</delete>
+	
+	<delete id="TIP-deleteComment" parameterClass="comment_TIP">
+		DELETE FROM TIP_COMMENT
+		<include refid="TIP-where-no" />
+		
+	</delete> -->
+</sqlMap>
+	

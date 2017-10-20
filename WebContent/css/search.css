@@ -1,0 +1,276 @@
+#container section {
+	width: 90%;
+	margin-left:20px;
+}
+
+#container .sec_recommend {
+	background: #e66768;
+	padding: 57px 0 62px 0
+}
+
+.sec_recommend h2 {
+	text-align: center;
+	font-size: 40px;
+	color: #fff332;
+	font-family: Microsoft YaHei, 'NSB';
+	margin-top: 50px
+}
+
+
+
+
+.field1 {
+	position: relative
+}
+
+.field1 h3 {
+	display: none
+}
+  .tabcontent {
+         display: none;
+         background-color:#ffffff;
+         padding: 6px 12px;
+         color:#fff;
+         
+      }
+      .tabcontent.current .ingr{
+      	margin-right: 10px;
+		line-height: 94px;
+      }
+      ul.tab li.current{
+         background-color: #ffffff;
+         color: #222;
+      }
+      .tabcontent.current {
+         display: block;
+      }
+
+.field1 .btn_search {
+	display: none
+}
+
+.sec_recommend form {
+	width: 840px;
+	overflow: hidden;
+	margin: 25px auto
+}
+
+.field1 {
+	width: 595px;
+	float: left
+}
+
+.field1>ul {
+	height: 272px;
+	border: 1px solid #a73f40;
+	background: #fff;
+	float: left;
+	overflow-x: hidden;
+	overflow-y: visible
+}
+
+.big_sort {
+	width: 190px;
+	margin-right: 9px;
+	box-sizing: border-box
+}
+
+.big_sort li {
+	font-size: 15px;
+	border-bottom: 1px solid #dddddd
+}
+
+.big_sort li a {
+	color: #cc4244;
+	display: block;
+	line-height: 44px;
+	padding-left: 18px;
+	line-height: 36px\0;
+	padding-top: 8px\0
+}
+
+.big_sort li a.current, .big_sort li a:hover {
+	font-family: Microsoft YaHei, 'NSB'
+}
+
+.small_sort {
+	width: 396px;
+	height: 350px;
+	float: left;
+	padding: 10px 13px;
+	box-sizing: border-box;
+	font-family: Microsoft YaHei, 'NS';
+	box-sizing: border-box
+}
+
+.small_sort li {
+	float: left;
+	/* position: absolute; */
+	margin: 0 0 0
+}
+
+/* .small_sort li div img{
+	
+	display: block;
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	color: #e66768;
+	font-family: Microsoft YaHei, 'NSL';
+	font-size: 13px
+} */
+
+ .small_sort li .tabcontent img {
+ 	
+	width: 60px;
+	height: 60px;
+	/* border-radius: 50%; */
+	/* position: absolute; */
+	display:inline;
+	margin-top:20px;
+	padding:0;
+	
+		
+  
+    
+    
+} 
+
+
+.small_sort li div em {
+	display: none
+}
+
+/* .small_sort li div.current em, .small_sort li a:hover em {
+	position: absolute;
+	display: block;
+	width: 19px;
+	height: 19px;
+	background:
+		url(C:/Java/App/RecipePlz/WebContent/upload/check.png)
+		no-repeat;
+	z-index: 70;
+	top: 0;
+	right: 0
+} */
+
+.tabcontent.current {
+         display: block;
+ }
+      
+.field2 {
+	width: 235px;
+	float: right
+}
+
+.field2 dl {
+	border: 1px solid #a73f40;
+	background: #fff;
+	position: relative
+}
+
+.field2 dt {
+	height: 50px;
+	font-size: 20px;
+	padding: 10px 15px;
+	font-family: Microsoft YaHei, 'NSL';
+	box-sizing: border-box;
+	color: #e66768;
+	
+	line-height: 40px\0
+}
+
+.field2 dd {
+	height: 222px;
+	box-sizing: border-box
+}
+
+.field2 dd ul {
+	height: 155px;
+	padding: 0 0;
+	overflow-x: hidden;
+	overflow-y: visible;
+	box-sizing: border-box
+}
+
+.field2 dd ul li {
+	float: left;
+	margin-bottom: 12px
+}
+
+/* .field2 dd ul li.no-content {
+	float: none;
+	font-size: 17px;
+	color: #b7b7b7;
+	text-align: center;
+	margin-top: 80px;
+	padding: 0
+}
+ */
+.field2 dd li a {
+	display: block;
+	position: relative;
+	width: 70px;
+	height: 90px;
+	text-align: center;
+	color: #e66768
+}
+
+.field2 dd li a em {
+	display: none
+}
+
+.field2 dd li a:hover em {
+	position: absolute;
+	display: block;
+	width: 19px;
+	height: 19px;
+	background:
+		url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_cancle-c59402a0fea49f22a1378d75190a0c5f.png)
+		no-repeat;
+	z-index: 70;
+	top: 0;
+	right: 0
+}
+
+.field2 dd li a img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%
+}
+
+.field2 dd li a strong {
+	position: absolute;
+	top: 65px;
+	right: 5px;
+	left: 5px;
+	text-align: center;
+	line-height: 1;
+	display: block;
+	text-align: center
+}
+
+.field2 dd .btn {
+	position: absolute;
+	left: 0;
+	padding: 13px 14px;
+	background-color: #fff
+}
+.field2 dd .btn_ {
+	position: absolute;
+	right: 0;
+	padding: 13px 13px;
+	background-color: #fff
+}
+
+.field2 dd .btn button, .btn_ button {
+	width: 90px;
+	height: 48px;
+	border-radius: 5px;
+	border: 1px solid #e66768;
+	background: #fff;
+	color: #e66768;
+	font-size: 15px;
+	line-height: 54px\0
+}
